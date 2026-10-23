@@ -1,0 +1,13 @@
+product_id,product_name,category,unit_price,margin_pct
+P001,Laptop,Electronics,55000,0.18
+P002,Smartphone,Electronics,25000,0.15
+P003,Headphones,Electronics,3000,0.3
+P004,Smart Watch,Electronics,8000,0.25
+P005,Office Chair,Furniture,7000,0.22
+P006,Study Desk,Furniture,9500,0.2
+P007,Bookshelf,Furniture,6000,0.24
+P008,Notebook Pack,Stationery,250,0.4
+P009,Pen Set,Stationery,180,0.45
+P010,Backpack,Accessories,1800,0.35
+P011,Water Bottle,Accessories,600,0.38
+P012,Running Shoes,Footwear,3500,0.32
