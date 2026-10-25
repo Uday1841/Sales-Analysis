@@ -1,10 +1,14 @@
 # Sales Performance Analysis (2024–2025)
 
-An end-to-end data analytics project: raw sales data → cleaning → analysis → interactive Excel dashboard → business recommendations.
+An end-to-end data analytics project: raw sales data → cleaning → analysis → interactive Excel and Power BI dashboards → business recommendations.
 
 > **Note:** the dataset is synthetic (generated for practice). The numbers do not describe a real company.
 
-**Tools:** Excel (Power Query, PivotTables, PivotCharts, Slicers), Python (pandas) for validation, SQL queries for analysis.
+**Tools:** Excel (Power Query, PivotTables, PivotCharts, Slicers), SQL (analysis queries), Python (pandas) for cleaning validation, Power BI (DAX, interactive dashboard).
+
+**Headline result:** Electronics drives 75% of sales but has the lowest margin (16%), and sales fell about 21% in 2025 because of lower order value, not fewer orders.
+
+![Power BI Dashboard](power_bi_dashboard_page1.png)
 
 ---
 
@@ -30,7 +34,7 @@ A retail company sells Electronics, Furniture, Footwear, Accessories and Station
 | `sales_raw.csv` | 2,045 | Raw transactions (19 columns) |
 | `customers.csv` | 300 | Customer master |
 | `products.csv` | 12 | Product master (price, margin %) |
-| `sales_clean.csv` | 2,000 | Cleaned data used in the dashboard |
+| `sales_clean.csv` | 2,000 | Cleaned data used in the dashboards |
 
 ## 3. Data quality log
 
@@ -53,11 +57,23 @@ Final validation: 2,000 unique orders, 4 regions, 5 categories, 3 channels, 5 pa
 
 **Lesson learned:** the order of cleaning matters. Profit must be filled after outlier sales are fixed, otherwise one inflated sales value created an impossible 880% margin on a single order.
 
-## 4. Dashboard
+## 4. Dashboards
 
-Interactive Excel dashboard with 5 KPI boxes, 5 charts and 3 slicers (year, category, region).
+### 4.1 Power BI dashboard (`Sales_Analysis_PowerBI.pbix`)
+Two-page interactive report built on a data model with sales, customers, products and calendar tables, with DAX measures and slicers for year, region and category.
 
-![Dashboard](dashboard.png)
+- **Page 1 – Overview:** KPI cards (total sales, total profit, orders, average order value, profit margin), sales and profit trend, sales by category, sales by channel, sales by city and region (map), top products, monthly sales by year.
+- **Page 2 – Deep dive:** profit margin by discount and by category, sales by customer, sales by sales rep, orders by delivery days, sales by customer segment, year-over-year sales waterfall.
+
+![Power BI Dashboard – Page 1](power_bi_dashboard_page1.png)
+![Power BI Dashboard – Page 2](power_bi_dashboard_page2.png)
+
+To explore it yourself, download the `.pbix` file and open it in Power BI Desktop.
+
+### 4.2 Excel dashboard (`sales_clean.xlsx`)
+Interactive Excel dashboard with 5 KPI boxes, 5 charts and 3 slicers (year, category, region), built from PivotTables and PivotCharts.
+
+![Excel Dashboard](Dashboard.png)
 
 ## 5. Key findings
 
@@ -93,20 +109,21 @@ Interactive Excel dashboard with 5 KPI boxes, 5 charts and 3 slicers (year, cate
 
 1. Profiled the raw data and logged every issue.
 2. Cleaned with Excel (TRIM, PROPER, Find & Replace, Power Query, lookups) and validated results against a pandas script.
-3. Built 10 PivotTables for analysis.
-4. Created the dashboard with PivotCharts and slicers connected to every pivot.
-5. Wrote insights and recommendations.
+3. Wrote SQL queries (`sales_analysis.sql`) to answer the business questions.
+4. Built 10 PivotTables for analysis.
+5. Created the Excel dashboard with PivotCharts and slicers connected to every pivot.
+6. Built a 2-page interactive Power BI dashboard with DAX measures, a calendar table and slicers.
+7. Wrote insights and recommendations.
 
 ## 8. Files
 
 ```
 sales_raw.csv, customers.csv, products.csv   raw data
-clean_sales.py                              cleaning and validation script
-sales_clean.csv / sales_clean.xlsx          cleaned data and dashboard workbook
-dashboard.png                               dashboard screenshot
+clean_sales.py                              cleaning and validation script (pandas)
+sales_analysis.sql                          SQL queries used for analysis
+sales_clean.csv / sales_clean.xlsx          cleaned data and Excel dashboard workbook
+Sales_Analysis_PowerBI.pbix                 Power BI report
+Dashboard.png                               Excel dashboard screenshot
+power_bi_dashboard_page1.png / page2.png    Power BI dashboard screenshots
 README.md                                   this file
 ```
-
-## 9. Resume line
-
-> Cleaned and analyzed 2,000+ sales transactions (2 years, 4 regions, 5 categories) by fixing duplicates, mixed date formats, missing values and outliers with Excel and Python; built an interactive Excel dashboard with KPIs, trends and slicers; found a 21% year-over-year sales decline driven by lower order value and recommended margin and discount actions.
